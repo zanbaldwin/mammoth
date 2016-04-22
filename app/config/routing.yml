@@ -1,2 +1,11 @@
+api:
+    resource: '.'
+    type:     'api_platform'
+    prefix: /api
+
+NelmioApiDocBundle:
+    resource: '@NelmioApiDocBundle/Resources/config/routing.yml'
+    prefix:   '/docs'
+
 app:
     resource: "@AppBundle/Resources/config/routing.yml"

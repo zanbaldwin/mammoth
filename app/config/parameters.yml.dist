@@ -15,5 +15,9 @@ parameters:
     mailer_user:       ~
     mailer_password:   ~
 
+    cors_allow_origin: http://localhost
+    api_name:          Your API name
+    api_description:   The full description of your API
+
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
