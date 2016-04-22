@@ -1,18 +1,28 @@
 {
-    "name": "symfony/framework-standard-edition",
+    "name": "zanderbaldwin/mammoth",
     "license": "MIT",
     "type": "project",
-    "description": "The \"Symfony Standard Edition\" distribution",
+    "description": "The mammoth, full-fat Symfony distribution for sandboxing.",
     "autoload": {
-        "psr-4": { "": "src/" },
-        "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
+        "psr-4": {
+            "AppBundle\\": "src/AppBundle/",
+            "Darsyn\\Bundle\\": "src/",
+            "Darsyn\\": "lib/"
+        },
+        "classmap": [
+            "app/AppKernel.php",
+            "app/AppCache.php"
+        ]
     },
     "autoload-dev": {
-        "psr-4": { "Tests\\": "tests/" }
+        "psr-4": {
+            "AppBundleTests\\": "tests/AppBundle/",
+            "Darsyn\\BundleTests\\": "tests/",
+            "DarsynTests\\": "tests/"
+        }
     },
     "require": {
-        "php": ">=5.5.9",
-        "symfony/symfony": "3.0.*",
+        "symfony/symfony": "^3.0",
         "doctrine/orm": "^2.5",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/doctrine-cache-bundle": "^1.2",
@@ -20,7 +30,9 @@
         "symfony/monolog-bundle": "^2.8",
         "sensio/distribution-bundle": "^5.0",
         "sensio/framework-extra-bundle": "^3.0.2",
-        "incenteev/composer-parameter-handler": "^2.0"
+        "incenteev/composer-parameter-handler": "^2.0",
+
+        "php": ">=5.6"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
@@ -32,7 +44,6 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ],
         "post-update-cmd": [
@@ -40,14 +51,14 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ]
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
-        "platform": {
-            "php": "5.5.9"
-        }
+        "bin-dir": "bin",
+        "prefer-dist": true
     },
     "extra": {
         "symfony-app-dir": "app",
@@ -55,12 +66,9 @@
         "symfony-var-dir": "var",
         "symfony-web-dir": "web",
         "symfony-tests-dir": "tests",
-        "symfony-assets-install": "relative",
+        "symfony-assets-install": "symlink",
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
-        },
-        "branch-alias": {
-            "dev-master": "3.0-dev"
         }
     }
 }

@@ -35,16 +35,19 @@ class AppKernel extends Kernel
 
     public function getCacheDir()
     {
-        return dirname(__DIR__).'/var/cache/'.$this->getEnvironment();
+        return $this->getRootDir() . '/../var/cache/' . $this->getEnvironment();
     }
 
     public function getLogDir()
     {
-        return dirname(__DIR__).'/var/logs';
+        return $this->getRootDir() . '/../var/logs';
     }
 
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
-        $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
+        if (!file_exists($config = sprintf('%s/config/config_%s.yml', $this->getRootDir(), $this->getEnvironment()))) {
+            throw new \RuntimeException(sprintf('Environment "%s" not supported.', $this->getEnvironment()));
+        }
+        $loader->load($config);
     }
 }
