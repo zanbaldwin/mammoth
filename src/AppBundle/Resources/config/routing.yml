@@ -1,5 +1,7 @@
 fos_user:
     resource: routing/fos/user.yml
+fos_oauth:
+    resource: routing/fos/oauth.yml
 
 app_homepage:
     path:     /

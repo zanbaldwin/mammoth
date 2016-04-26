@@ -37,6 +37,7 @@
         "nelmio/api-doc-bundle": "^2.10",
 
         "friendsofsymfony/user-bundle": "^2.0",
+        "friendsofsymfony/oauth-server-bundle": "^1.5.2",
 
         "stack/builder": "^1.0",
         "darsyn/stack-request-id": "^1.0",

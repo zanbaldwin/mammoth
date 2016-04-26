@@ -24,6 +24,7 @@ class AppKernel extends Kernel
 
             // Friends of Symfony
             new FOS\UserBundle\FOSUserBundle(),
+            new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
 
             // Application
             new AppBundle\AppBundle(),
