@@ -91,3 +91,11 @@ nelmio_api_doc:
         request_format:
             formats:
                 json:       "application/json"
+
+# Friends of Symfony
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: AppBundle\Entity\User
+    group:
+        group_class: AppBundle\Entity\Group
