@@ -3,10 +3,9 @@ declare(strict_types=1);
 
 namespace App;
 
-use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
-class Kernel extends BaseKernel
+class Kernel extends Interop\Kernel
 {
     public function registerBundles() : array
     {
