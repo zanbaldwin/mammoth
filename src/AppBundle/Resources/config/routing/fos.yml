@@ -1,0 +1,5 @@
+fos_user:
+    resource: fos/user.yml
+
+fos_oauth:
+    resource: fos/oauth.yml

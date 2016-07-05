@@ -1,3 +1,6 @@
+fos:
+    resource: routing/fos.yml
+
 app_homepage:
     path:     /
     defaults:

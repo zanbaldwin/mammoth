@@ -26,4 +26,9 @@ class AppBundle extends Bundle
     public function registerCommands(Application $application)
     {
     }
+
+    public function getParent() : string
+    {
+        return 'FOSUserBundle';
+    }
 }

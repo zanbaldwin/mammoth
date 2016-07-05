@@ -6,19 +6,43 @@ security:
     providers:
         in_memory:
             memory: ~
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
+        oauth_register:
+            pattern: ^/oauth/v2/register
+            security: false
+        oauth_token:
+            pattern: ^/oauth/v2/token
+            security: false
+        api:
+            pattern: ^/api
+            fos_oauth: true
+            stateless: true
+            anonymous: false
         main:
-            anonymous: ~
-            # activate different ways to authenticate
+            pattern: ^/
+            logout: true
+            anonymous: true
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
 
-            # http_basic: ~
-            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
-
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+    access_control:
+        - { path: "^/login$", role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: "^/register", role: IS_AUTHENTICATED_ANONYMOUSLY }
+        # Set the "register" API end-point the same as normal registration, you
+        # cannot authenticate a user who is trying to register!
+        - { path: '^/oauth/v2/register', role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: "^/resetting", role: IS_AUTHENTICATED_ANONYMOUSLY }
+        # You must be authenticated fully whilst trying to access the API because
+        # "Remember me" option does not exist in OAuth.
+        - { path: '^/api', role: IS_AUTHENTICATED_FULLY }

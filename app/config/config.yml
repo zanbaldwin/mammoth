@@ -68,3 +68,24 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+# Friends of Symfony
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: AppBundle\Entity\User
+    group:
+        group_class: AppBundle\Entity\Group
+fos_oauth_server:
+    db_driver: orm
+    client_class: AppBundle\Entity\OAuth\Client
+    access_token_class: AppBundle\Entity\OAuth\AccessToken
+    refresh_token_class: AppBundle\Entity\OAuth\RefreshToken
+    auth_code_class: AppBundle\Entity\OAuth\AuthCode
+    service:
+        user_provider: fos_user.user_provider.username
+        options:
+            auth_code_lifetime:     15          # 15 seconds.
+            access_token_lifetime:  3600        # 1 hour.
+            refresh_token_lifetime: 3024000     # 5 weeks.
+            supported_scopes: ~
