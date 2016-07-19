@@ -20,6 +20,7 @@ class Kernel extends BaseKernel
             new \Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle,
             new \Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle,
             new \Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle,
+            new \Puli\SymfonyBundle\PuliBundle(),
 
             new \AppBundle\AppBundle,
         ];
